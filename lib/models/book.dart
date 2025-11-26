@@ -1,13 +1,21 @@
 class Book {
-  final int id;
-  final String name;
+  final int? id;
+  final String? name;
 
-  Book({required this.id, required this.name});
+  Book({this.id, required this.name});
 
   factory Book.fromJson(Map<String, dynamic> json) {
+    print('Book JSON: $json');
     return Book(
-      id: json['id'],
-      name: json['name'],
+      id: json['Id'] as int?,
+      name: json['Name'] as String?,
     );
   }
+
+  Map<String, dynamic> toJson() {
+  return {
+    'Id': id,
+    'Name': name,
+  };
+}
 }
